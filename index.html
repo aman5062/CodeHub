@@ -7,6 +7,27 @@
     <title>Document</title>
 </head>
 <body>
+    <script>
+        fetch("json/java.json")
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(function(datas) {
+            let thedata = document.querySelector("#videos");
+            let out = "";
+            for (let data of datas) {
+                out += `<h4>${data.topic}</h4>
+                <iframe width="353" height="200" src="${data.link}" title="${data.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br>`;
+            }
+            thedata.innerHTML = out;
+        })
+        .catch(function(error) {
+            console.error('Error during fetch:', error);
+        });
+      </script>
     <header>
        <img src="logo.png">
     </header>
@@ -16,8 +37,10 @@
         <li><a href="web.html">Web Dev</a></li>
         <li><a href="app.html">App Dev</a></li>
     </section>
-    <body>
-        Java
+    <body><center>
+        <div id="videos"></div>
+    </center>
+      
     </body>
 </body>
 </html>
