@@ -49,3 +49,13 @@ header img{
 body{
     color: white;
 }
+.topic{
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 3px;
+
+}
+.topic:hover{
+    color: yellow;
+    cursor: pointer;
+}

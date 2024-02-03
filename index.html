@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
     <title>Document</title>
 </head>
 <body>
@@ -19,8 +19,8 @@
             let thedata = document.querySelector("#videos");
             let out = "";
             for (let data of datas) {
-                out += `<h4>${data.topic}</h4>
-                <iframe width="353" height="200" src="${data.link}" title="${data.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br>`;
+                out += `<h4 class="topic">${data.topic}</h4><center>
+                <iframe width="353" height="200" src="https://www.youtube.com/embed/${data.link}" title="${data.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center><br>`;
             }
             thedata.innerHTML = out;
         })
@@ -37,9 +37,9 @@
         <li><a href="web.html">Web Dev</a></li>
         <li><a href="app.html">App Dev</a></li>
     </section>
-    <body><center>
+    <body>
         <div id="videos"></div>
-    </center>
+    
       
     </body>
 </body>

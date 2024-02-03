@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
     <title>Document</title>
 </head>
 <body>
+    <script>
+        fetch("json/web.json")
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(function(datas) {
+            let thedata = document.querySelector("#videos");
+            let out = "";
+            for (let data of datas) {
+                out += `<h4 class="topic">${data.topic}</h4><center>
+                <iframe width="353" height="200" src="https://www.youtube.com/embed/${data.link}" title="${data.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center><br>`;
+            }
+            thedata.innerHTML = out;
+        })
+        .catch(function(error) {
+            console.error('Error during fetch:', error);
+        });
+      </script>
     <header>
        <img src="logo.png">
     </header>
@@ -17,7 +38,9 @@
         <li><a href="app.html">App Dev</a></li>
     </section>
     <body>
-        Web Dev
+        <div id="videos"></div>
+    
+      
     </body>
 </body>
 </html>
